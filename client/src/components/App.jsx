@@ -48,10 +48,10 @@ function App() {
   // }, []);
 
   return (
-    <Router>
+    <Router basename="/Taskmanager-app">
       <Routes>
-        <Route path="/" element={<Navigate to="/Taskmanager" />} />
-        <Route path="/Taskmanager"  element={<TaskManagerHero />} />
+        <Route path="/" element={<Navigate to="/Welcome" />} />
+        <Route path="/Welcome"  element={<TaskManagerHero />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
