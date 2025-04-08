@@ -1,0 +1,135 @@
+.fav-tasks {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    padding-left: 270px; 
+    background-color: #ffffff;
+    min-height: 96vh;
+    transition: padding-left 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  .sidebar.collapsed ~ .fav-tasks {
+    padding-left: 90px; 
+  }
+  
+  .fav-tasks h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .fav-tasks ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  .fav-tasks li {
+    background-color: #fffbfb;
+    border: 1px solid #b0b0b0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    position: relative;
+    padding-bottom: 50px;
+  }
+  
+  .fav-tasks li:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .fav-task-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .fav-task-description {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+  }
+  
+  .fav-task-buttons {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .fav-task-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .fav-task-buttons button:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+  }
+  
+  .fav-task-buttons #remove-favorite {
+    background-color: #d9534f;
+  }
+  
+  .fav-task-buttons #remove-favorite:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .fav-tasks {
+      padding-left: 90px;
+    }
+  
+    .fav-tasks h1 {
+      font-size: 26px;
+    }
+  
+    .fav-task-title {
+      font-size: 16px;
+    }
+  
+    .fav-task-description {
+      font-size: 13px;
+    }
+  
+    .fav-task-buttons {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .fav-task-buttons button {
+      width: 100%;
+      max-width: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .fav-tasks {
+      padding: 15px;
+    }
+  
+    .fav-tasks ul {
+      padding: 0 5px;
+    }
+  
+    .fav-tasks h1 {
+      font-size: 22px;
+    }
+  }
+  

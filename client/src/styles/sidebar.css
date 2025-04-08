@@ -1,0 +1,147 @@
+
+.sidebar {
+  background-color: #f7f7f7;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  box-sizing: border-box;
+  transition: width 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  align-items: center;
+  padding: 20px 8px;
+}
+
+.sidebar.collapsed .task-manager-app-wrapper,
+.sidebar.collapsed .text-wrapper,
+.sidebar.collapsed .text-wrapper-2 {
+  display: none;
+}
+
+.sidebar .task-manager-app-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #dbd9d9b2;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  transform: 0.3s ease;
+}
+
+.sidebar .task-manager-app {
+  font-family: "Myanmar Khyay-Regular", Helvetica;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+}
+
+.sidebar .task-manager-app .span {
+  color: #e53e3e;
+}
+
+.sidebar .sidebar-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar .frame {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.sidebar .frame:hover {
+  background-color: #e2e8f0;
+}
+
+
+@keyframes showLabel {
+  to {
+    opacity: 1;
+  }
+}
+
+.sidebar .img {
+  width: 24px;
+  height: 24px;
+}
+
+.sidebar .text-wrapper {
+  font-family: "Myanmar Khyay-Regular", Helvetica;
+  font-size: 16px;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.shrink-navbar-button {
+  position: fixed;
+  top: 20px;
+  left: 260px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 101;
+  transition: left 0.3s ease, transform 0.3s ease;
+}
+
+.shrink-navbar-button.collapsed {
+  left: 80px;
+  transform: rotate(180deg);
+}
+
+@media (max-height: 600px) {
+  .sidebar {
+    padding: 15px 10px;
+  }
+
+  .sidebar .sidebar-elements {
+    gap: 15px;
+  }
+
+  .sidebar .frame {
+    padding: 6px 8px;
+  }
+
+  .sidebar .text-wrapper {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar .task-manager-app {
+    font-size: 18px;
+  }
+
+  .sidebar .text-wrapper {
+    font-size: 14px;
+  }
+
+  .sidebar.collapsed {
+    width: 60px;
+  }
+
+  .shrink-navbar-button.collapsed {
+    left: 70px;
+  }
+}
