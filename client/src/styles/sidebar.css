@@ -11,20 +11,15 @@
   flex-direction: column;
   padding: 20px 15px;
   box-sizing: border-box;
-  transition: width 0.4s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar.collapsed {
   width: 70px;
   align-items: center;
   padding: 20px 8px;
-}
-
-.sidebar.collapsed .task-manager-app-wrapper,
-.sidebar.collapsed .text-wrapper,
-.sidebar.collapsed .text-wrapper-2 {
-  display: none;
 }
 
 .sidebar .task-manager-app-wrapper {
@@ -35,10 +30,21 @@
   border-bottom: 1px solid #dbd9d9b2;
   padding-bottom: 10px;
   margin-bottom: 30px;
-  transform: 0.3s ease;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.sidebar .task-manager-app {
+.sidebar.collapsed .task-manager-app-wrapper {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+  margin-bottom: 20px;
+}
+
+.task-manager-app {
   font-family: "Myanmar Khyay-Regular", Helvetica;
   font-size: 22px;
   font-weight: bold;
@@ -46,48 +52,81 @@
   color: #000;
 }
 
-.sidebar .task-manager-app .span {
+.task-manager-app .span {
   color: #e53e3e;
 }
 
-.sidebar .sidebar-elements {
+.text-wrapper-2 {
+  color: #000;
+}
+
+.sidebar-elements {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 20px;
 }
 
-.sidebar .frame {
+.frame {
   display: flex;
   align-items: center;
   gap: 12px;
   cursor: pointer;
-  padding: 8px 10px;
-  border-radius: 6px;
-  transition: background 0.2s;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  overflow: hidden;
+  min-height: 40px;
 }
 
-.sidebar .frame:hover {
+.frame:hover {
+  background-color: #e2e8f0;
+  transform: translateX(4px);
+}
+
+
+.sidebar.collapsed .frame span{
+  display: none;
+}
+
+.sidebar.collapsed .frame:hover {
+  transform: scale(1.1);
   background-color: #e2e8f0;
 }
 
-
-@keyframes showLabel {
-  to {
-    opacity: 1;
-  }
-}
-
-.sidebar .img {
+.img {
   width: 24px;
   height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
 }
 
-.sidebar .text-wrapper {
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.text-wrapper {
   font-family: "Myanmar Khyay-Regular", Helvetica;
   font-size: 16px;
   color: #000000;
   white-space: nowrap;
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 0.1s;
+}
+
+.sidebar.collapsed .text-wrapper {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+  transition-delay: 0s;
 }
 
 .shrink-navbar-button {
@@ -98,7 +137,12 @@
   height: 24px;
   cursor: pointer;
   z-index: 101;
-  transition: left 0.3s ease, transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.shrink-navbar-button:hover {
+  transform: scale(1.1);
 }
 
 .shrink-navbar-button.collapsed {
@@ -106,42 +150,6 @@
   transform: rotate(180deg);
 }
 
-@media (max-height: 600px) {
-  .sidebar {
-    padding: 15px 10px;
-  }
-
-  .sidebar .sidebar-elements {
-    gap: 15px;
-  }
-
-  .sidebar .frame {
-    padding: 6px 8px;
-  }
-
-  .sidebar .text-wrapper {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 200px;
-  }
-
-  .sidebar .task-manager-app {
-    font-size: 18px;
-  }
-
-  .sidebar .text-wrapper {
-    font-size: 14px;
-  }
-
-  .sidebar.collapsed {
-    width: 60px;
-  }
-
-  .shrink-navbar-button.collapsed {
-    left: 70px;
-  }
+.shrink-navbar-button.collapsed:hover {
+  transform: rotate(180deg) scale(1.1);
 }

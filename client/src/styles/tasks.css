@@ -8,12 +8,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.tasks h1 {
-  font-size: 35px;
-  margin-bottom: 20px;
-  color: black;
-}
-
 .tasks ul {
   list-style: none;
   padding: 0;
@@ -87,7 +81,7 @@
   background-color: #cc1711;
 }
 #add-to-favorite:hover {
-  background-color: rgb(255, 218, 10);
+  background-color: gold;
 }
 
 .clicked-favorite-button {
@@ -109,8 +103,6 @@
 #completed-button:hover {
   background-color: #e0f2fe; 
 }
-
-
 #completed-button-icon {
   color: #22c55e; 
   font-size: 20px;
@@ -118,6 +110,14 @@
   justify-content: center;
   align-items: center;
 }
+.clicked-completed-button {
+  background-color: #a7f4c2 !important; /* Light green */
+  pointer-events: none;
+  opacity: 0.7;
+}
+#completed-button:active {
+  transform: scale(0.95);
+} 
 
 
 .tasks li {

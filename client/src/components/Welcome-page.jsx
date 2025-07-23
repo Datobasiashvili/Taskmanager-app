@@ -1,7 +1,6 @@
 import "../styles/Welcome-page.css";
 import { useNavigate } from "react-router-dom";
 
-import React from "react";
 import "../styles/Welcome-page.css";
 
 export const TaskManagerHero = () => {
@@ -16,7 +15,7 @@ export const TaskManagerHero = () => {
           src="https://c.animaapp.com/m9757xix2Dq251/img/team-checklist-cuate-1.png"
         />
 
-        <div className="frame">
+        <div className="welcome-page-frame">
           <div className="text">
             <div className="text-frame">
               <div className="text-wrapper">Task Manager</div>

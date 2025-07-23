@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
 const { userValidationSchema } = require("../utils/validationSchema");
 
-// Importijng UUID library to generate the exact same taskId's for both tasks and favoriteTasks, because the database was generating different IDs for the same tasks that were favorites as well.
+// Importing UUID library to generate the exact same taskId's for both tasks and favoriteTasks, because the database was generating different IDs for the same tasks that were favorites as well.
 const { v4: uuidv4 } = require("uuid");
 
 // User Registration
@@ -54,18 +54,17 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-
 // Get User
-router.get("/userLogged", authenticateToken, async (req,res) => {
+router.get("/userLogged", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    if (!user) return res.status(404).json({ msg: "User not found" })
+    if (!user) return res.status(404).json({ msg: "User not found" });
 
     res.status(200).json({ name: user.name });
   } catch (err) {
     res.status(500).json({ msg: "Server errro", error: err.message });
   }
-})
+});
 
 // Get User Tasks
 router.get("/tasks", authenticateToken, async (req, res) => {
@@ -169,12 +168,64 @@ router.get("/favorite-tasks", authenticateToken, async (req, res) => {
   }
 });
 
-
 // Delete favorite task
-router.delete("/favorite-tasks", authenticateToken, async (req, res) => {
+router.delete(
+  "/favorite-tasks/:taskId/",
+  authenticateToken,
+  async (req, res) => {
+    try {
+      const taskId = req.params.taskId;
+      const user = await User.findById(req.user.taskId);
 
-})
+      if (!user) return res.status(404).json({ msg: "User not found" });
+      const updatedFavTasks = user.favoriteTasks.filter(
+        (favTask) => favTask.taskId.toString() !== taskId.toString()
+      );
 
+      if (updatedFavTasks.length === user.favoriteTasks.length) {
+        return res.status(404).json({ msg: "Favorite task not found" });
+      } else {
+        user.favoriteTask = updatedFavTasks;
+        await user.save();
+      }
+
+      return res.status(200).json({ msg: "Favorite task removed" });
+    } catch (err) {
+      console.error("Error removing favorite task:", err);
+      return res.status(500).json({ msg: "Server error" });
+    }
+  }
+);
+
+// Add completed task
+router.post("/completed-tasks", authenticateToken, async (req, res) => {
+  const { taskId, title, description, date } = req.body;
+
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    const newCompletedTask = { taskId, title, description, date };
+    user.completedTasks.push(newCompletedTask);
+    await user.save();
+
+    res.status(201).json({ completedTask: newCompletedTask });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
+});
+
+// Get completed tasks
+router.get("/completed-tasks", authenticateToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    res.status(200).json({ completedTasks: user.completedTasks });
+  } catch (err) {
+    res.status(500).json({ msg: "Server error", error: err.message });
+  }
+});
 
 // Validate token route
 router.get("/validate-token", authenticateToken, async (req, res) => {

@@ -31,8 +31,7 @@ const UserSchema = mongoose.Schema(
     },
     password: {
       type: String,
-      require: [true, "Password is required"],
-      unique: true,
+      required: [true, "Password is required"],
     },
     tasks: [TaskSchema],
     favoriteTasks: [TaskSchema],
