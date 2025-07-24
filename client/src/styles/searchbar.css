@@ -7,12 +7,6 @@
   flex-wrap: wrap;
 }
 
-.searchbar-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-}
-
 .searchbar-input {
   padding: 10px 15px;
   font-size: 1rem;
@@ -21,6 +15,10 @@
   outline: none;
   transition: all 0.2s ease;
   width: 500px;
+}
+
+.searchbar-input::placeholder{
+  color: #757575 ;
 }
 
 .searchbar-input:focus {
@@ -39,10 +37,11 @@
 }
 
 .header-with-search h1 {
+  color: gray;
   margin: 0;
-  font-size: 38px;
   font-weight: 600;
   margin-right: 50px;
+  font-size: 2em; 
 }
 
 .searchbar-input {

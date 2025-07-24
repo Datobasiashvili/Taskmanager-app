@@ -1,3 +1,7 @@
+html {
+  background-color: #F9F9F9  ;
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
@@ -43,7 +47,7 @@
 }
 
 .task-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   color: black;
   cursor: pointer;
@@ -51,7 +55,7 @@
 
 .task-description {
   font-size: 14px;
-  color: gray;
+  color: #333333 ;
   margin-top: 10px;
   display: none;
 }
@@ -78,18 +82,25 @@
 }
 
 #delete-button:hover {
-  background-color: #cc1711;
+  background-color: #d85c5c;
 }
 #add-to-favorite:hover {
   background-color: gold;
 }
 
 .clicked-favorite-button {
-  background-color: gold !important;
+  background-color: #FFC107 !important;
 }
 .clicked-favorite-button:hover {
-  background-color: rgb(238, 203, 4) !important; 
+  background-color: #f3bb14 !important; 
 }
+
+
+#edit-button:hover {
+  background-color: #1976D2 ;
+}
+
+
 
 
 #completed-button {
@@ -118,6 +129,8 @@
 #completed-button:active {
   transform: scale(0.95);
 } 
+
+
 
 
 .tasks li {

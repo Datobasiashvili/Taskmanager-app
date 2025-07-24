@@ -1,6 +1,6 @@
 
 .sidebar {
-  background-color: #f7f7f7;
+  background-color: #00796B ;
   position: fixed;
   left: 0;
   top: 0;
@@ -53,7 +53,7 @@
 }
 
 .task-manager-app .span {
-  color: #e53e3e;
+  color: white;
 }
 
 .text-wrapper-2 {
@@ -81,7 +81,7 @@
 }
 
 .frame:hover {
-  background-color: #e2e8f0;
+  background-color: #4DB6AC ;
   transform: translateX(4px);
 }
 
@@ -92,7 +92,7 @@
 
 .sidebar.collapsed .frame:hover {
   transform: scale(1.1);
-  background-color: #e2e8f0;
+  background-color: #4DB6AC;
 }
 
 .img {

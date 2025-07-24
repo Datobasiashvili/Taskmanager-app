@@ -195,7 +195,6 @@ function Tasks() {
     <>
       <Sidebar />
       <div className="tasks">
-
         <div className="header-with-search">
           <h1>Tasks</h1>
           <Searchbar onSearch={handleSearch} />
@@ -212,16 +211,6 @@ function Tasks() {
               <p className="task-description">{task.description}</p>
               <div className="task-buttons">
                 <button
-                  id="delete-button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleDelete(task.taskId);
-                  }}
-                >
-                  Delete
-                </button>
-
-                <button
                   id="add-to-favorite"
                   className={
                     favoriteTasks.includes(task._id)
@@ -237,6 +226,18 @@ function Tasks() {
                   {favoriteTasks.includes(task._id)
                     ? "★ Favorited"
                     : "☆ Add Favorite"}
+                </button>
+
+                <button id="edit-button">Edit</button>
+
+                <button
+                  id="delete-button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(task.taskId);
+                  }}
+                >
+                  Delete
                 </button>
 
                 <button

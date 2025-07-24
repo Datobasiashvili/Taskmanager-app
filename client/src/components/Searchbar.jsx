@@ -15,12 +15,12 @@ function Searchbar({ onSearch }) {
       <input
         type="text"
         className="searchbar-input"
-        placeholder="Search by Title or Description"
+        placeholder="Search tasks by title or description "
         value={query}
         onChange={handleChange}
       />
     </div>
-  );
+  ); 
 }
 
 export default Searchbar;
